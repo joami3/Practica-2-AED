@@ -166,6 +166,7 @@ grafico2
 grafico3<-ggplot(ds,aes(x=MinTemp,y=MaxTemp,colour = RainTomorrow))+geom_point()+ggtitle("Temperaturas")
 grafico3
 ggsave('figs/Ejercicio1.pdf')
+getwd()
 ```
 
 ### **Ejercicio 2**
