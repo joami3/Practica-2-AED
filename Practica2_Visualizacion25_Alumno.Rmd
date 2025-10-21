@@ -203,7 +203,7 @@ iris.grafico1<-ggplot(iris.tidy,aes(x=Species,y=Value))+geom_point()
 iris.grafico1
 iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) +geom_jitter() +facet_grid(.~Measure)
 iris.grafico2
-#Con geom_jitter se aprecia mejor
+#Con geom_jitter se aprecia mejor la cantidad de puntos
 ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
 ```
 
@@ -288,7 +288,16 @@ ggplot(data=Dosis.Medicina2, aes(x=Dosis, y=Efectividad, group=Complemento)) +
 ```{r Solucion ejercicio 4}
 load("./data/Ejercicio4_Data.RData")
 summary(DatosEjer4)
+g1<-ggplot(DatosEjer4,aes(x=Fecha,y=Ventas,colour = Fabricante))+geom_point()
+g1
+g2<-ggplot(DatosEjer4,aes(x=Fecha,y=Ventas,colour = Fabricante))+geom_line()+geom_point()
+g2
+g2<-ggplot(DatosEjer4,aes(x=Fecha,y=Ventas,colour = Fabricante,linetype = Fabricante))+geom_line()+geom_point()
+g2
+g2<-ggplot(DatosEjer4,aes(x=Fecha,y=Ventas,colour = Fabricante,linetype = Fabricante))+geom_line()+geom_point()+labs(title="Ventas mensuales de diferentes compañías tecnológicas")
+g2
 
+ggsave('figs/Ejercicio4.pdf')
 ```
 
 ## Barras de error con **ggplot2**
@@ -344,8 +353,12 @@ El fichero ``iceRiver.RData`` contiene información del caudal de dos ríos isla
   * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio5.pdf``.
 
 ```{r Solucion ejercicio 6 }
+load("./data/iceRiver.RData")
 
+caudal<-ggplot(ice.river.df)+geom_line(aes(x=time,y=flow.vat,colour = "Jokulsa Eystri"))+geom_line(aes(x=time,y=flow.jok,colour ="Vatnsdalsa"))+scale_colour_manual(values = c("Vatnsdalsa" = "blue", "Jokulsa Eystri" = "red"))+labs(title="Caudales de los rios islandeses Vatnsdalsa (azul) y Jokulsa Eystri(azul)",y="Caudal",x="Años")
+caudal
 
+ggsave('figs/Ejercicio6.pdf')
 ```
 
 
