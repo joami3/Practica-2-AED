@@ -157,7 +157,14 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
 
 ```{r Solucion ejercicio 1}
-
+library(ggplot2)
+weather<- load("./data/weatherAUS.RData")
+grafico1<-ggplot(ds,aes(x=MinTemp,y=MaxTemp))+geom_point()
+grafico1
+grafico2<-ggplot(ds,aes(x=MinTemp,y=MaxTemp,colour = RainTomorrow))+geom_point()
+grafico2
+grafico3<-ggplot(ds,aes(x=MinTemp,y=MaxTemp,colour = RainTomorrow))+geom_point()+ggtitle("Temperaturas")
+grafico3
 ggsave('figs/Ejercicio1.pdf')
 ```
 
