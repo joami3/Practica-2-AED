@@ -355,7 +355,7 @@ El fichero ``iceRiver.RData`` contiene información del caudal de dos ríos isla
 ```{r Solucion ejercicio 6 }
 load("./data/iceRiver.RData")
 
-caudal<-ggplot(ice.river.df)+geom_line(aes(x=time,y=flow.vat,colour = "Jokulsa Eystri"))+geom_line(aes(x=time,y=flow.jok,colour ="Vatnsdalsa"))+scale_colour_manual(values = c("Vatnsdalsa" = "blue", "Jokulsa Eystri" = "red"))+labs(title="Caudales de los rios islandeses Vatnsdalsa (azul) y Jokulsa Eystri(azul)",y="Caudal",x="Años")
+caudal<-ggplot(ice.river.df)+geom_line(aes(x=time,y=flow.vat,colour = "Jokulsa Eystri"))+geom_line(aes(x=time,colour ="Vatnsdalsa"))+scale_colour_manual(values = c("Vatnsdalsa" = "blue", "Jokulsa Eystri" = "red"))+labs(title="Caudales de los rios islandeses Vatnsdalsa (azul) y Jokulsa Eystri(azul)",y="Caudal",x="Años")
 caudal
 
 ggsave('figs/Ejercicio6.pdf')
