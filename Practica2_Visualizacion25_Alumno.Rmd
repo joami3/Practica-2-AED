@@ -203,6 +203,7 @@ iris.grafico1<-ggplot(iris.tidy,aes(x=Species,y=Value))+geom_point()
 iris.grafico1
 iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) +geom_jitter() +facet_grid(.~Measure)
 iris.grafico2
+#Con geom_jitter se aprecia mejor
 ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
 ```
 
@@ -285,6 +286,8 @@ ggplot(data=Dosis.Medicina2, aes(x=Dosis, y=Efectividad, group=Complemento)) +
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio4.pdf``.
 
 ```{r Solucion ejercicio 4}
+load("./data/Ejercicio4_Data.RData")
+summary(DatosEjer4)
 
 ```
 
