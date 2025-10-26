@@ -203,7 +203,7 @@ iris.grafico1<-ggplot(iris.tidy,aes(x=Species,y=Value))+geom_point()
 iris.grafico1
 iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) +geom_jitter() +facet_grid(.~Measure)
 iris.grafico2
-#Con geom_jitter se aprecia mejor la cantidad de puntos
+#Con geom_jitter se aprecia mejor la cantidad de puntos   
 ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
 ```
 
