@@ -340,8 +340,18 @@ Añadir barras de error a un gráfico de línea.
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio5.pdf``.
 
 ```{r Solucion ejercicio 5}
+library(ggplot2)
+load("./data/Experimento.Rdata")
+str("Experimento.Rdata")
 
+g1<- ggplot(Experimento, aes(x = Dosis, y = Altura,color = Complemento,linetype = Complemento,shape = Complemento))+geom_point()+geom_line()+theme_minimal() +labs(title = "Altura según Dosis y Complemento",x = "Dosis",y = "Altura")
+g1
+g2 <- g1 +geom_errorbar(aes(ymin = Altura - Error_Altura,ymax =Altura + Error_Altura),width = 0.2)
+g2
 
+g3 <- ggplot(Experimento, aes(x = Dosis, y = Altura,color = Complemento)) +geom_point() +geom_line() +geom_errorbar(aes(ymin = Altura - Error_Altura,ymax = Altura + Error_Altura),width = 0.2) +scale_color_brewer(palette = "Reds") +theme_minimal() +labs(title = "Altura con barras de error (paleta roja)",x = "Dosis", y = "Altura")
+g3
+ggsave("figs/Ejercicio5.pdf")
 ```
 
 ### **Ejercicio 6 **
@@ -375,6 +385,10 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio7.pdf``.
 
 ```{r Solucion ejercicio 7}
+library(ggplot2)
+load("./data/weatherAUS_distributions.Rdata")#no me carga este archivo 
+
+g1 <- ggplot(weatherAUS_distributions, aes(x = factor(Year), y = MinTemp)) +geom_boxplot(fill = "skyblue", color = "black") +labs(title = "Distribución de temperaturas mínimas por año",x = "Año", y = "Temperatura mínima (°C)")
 
 ```
 
@@ -560,5 +574,14 @@ ggplot(data=ds,aes(x=reorder(Location,Temp9am,FUN=mean,decreasing=TRUE), y=Temp9
   labs(x='Location')+
   scale_y_continuous(breaks = seq(0,30,by=3),labels = paste0(seq(0,30,by=3),'°')) 
 ```
+
+```{r}
+library(tidyr)
+library(ggplot2)
+load("./data/iceRiver.RData")
+ice.river.df %>% pivot_longer(names_to= "River",values_to = "Flow",cols=flow.vat:flow.jok)%>%ggplot(aes(x=time,y=Flow))+geom_line(aes(colour = River))+geom_point(size=0.01)
+
+```
+
 
 
